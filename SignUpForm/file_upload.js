@@ -5,8 +5,8 @@ var AWS = require('aws-sdk');
 
 const BUCKETNAME = 'mdemobucket-vasu';
 const LAMBDANAME = 'mdemobucket-vasu';
-const accessKeyId = 'AKIAQKWXGY6IZXDTQCWF';
-const accessSecretKey = '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';
+const accessKeyId = 'XXXXXX';
+const accessSecretKey = 'XXXXX';
 
 const s3 = new AWS.S3({
   accessKeyId: accessKeyId,
