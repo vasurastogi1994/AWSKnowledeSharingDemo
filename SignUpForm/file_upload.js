@@ -4,7 +4,7 @@ var fs = require('fs');
 var AWS = require('aws-sdk');
 
 const BUCKETNAME = 'mdemobucket-vasu';
-const LAMBDANAME = 'mdemobucket-vasu';
+const LAMBDANAME = 'GO-HelloWorld';
 const accessKeyId = 'XXXXXX';
 const accessSecretKey = 'XXXXX';
 
@@ -53,7 +53,7 @@ http.createServer(function (req, res) {
         var location = await uploadFile(newpath,files.filetoupload.name);
         var lambdaReq = {Name:fields.Name};
         var params = {
-          FunctionName: 'GO-HelloWorld',
+          FunctionName: LAMBDANAME,
           Payload: JSON.stringify(lambdaReq)
         };
 
