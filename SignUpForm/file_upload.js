@@ -4,9 +4,9 @@ var fs = require('fs');
 var AWS = require('aws-sdk');
 
 const BUCKETNAME = 'mdemobucket-vasu';
-const LAMBDANAME = 'GO-HelloWorld';
-const accessKeyId = 'XXXXXX';
-const accessSecretKey = 'XXXXX';
+const LAMBDANAME = 'mdemobucket-vasu';
+const accessKeyId = 'XXXXXXXXXXXX';
+const accessSecretKey = 'XXXXXXXXXXXXXXXXXXXXXXXX';
 
 const s3 = new AWS.S3({
   accessKeyId: accessKeyId,
@@ -16,7 +16,7 @@ const s3 = new AWS.S3({
 var lambda = new AWS.Lambda({
   accessKeyId: accessKeyId,
   secretAccessKey: accessSecretKey,
-  region : 'ap-south-1'
+  region : 'us-east-2'
 });
 
 
@@ -46,14 +46,14 @@ http.createServer(function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
-      var newpath =  'C:/Users/vrastogi/Desktop/' + files.filetoupload.name;
+      var newpath =  '/home/ec2-user/temp/' + files.filetoupload.name;
       fs.rename(oldpath, newpath, async function (err) {
         if (err) throw err;
 
         var location = await uploadFile(newpath,files.filetoupload.name);
         var lambdaReq = {Name:fields.Name};
         var params = {
-          FunctionName: LAMBDANAME,
+          FunctionName: 'GO-HelloWorld',
           Payload: JSON.stringify(lambdaReq)
         };
 
@@ -75,4 +75,4 @@ http.createServer(function (req, res) {
     res.write('</form>');
     return res.end();
   }
-}).listen(8080);
+}).listen(80);
