@@ -51,7 +51,7 @@ http.createServer(function (req, res) {
         if (err) throw err;
 
         var location = await uploadFile(newpath,files.filetoupload.name);
-        var lambdaReq = {Name:fields.Name};
+        var lambdaReq = {Name:fields.Name,Emailid:fields.Emailid};
         var params = {
           FunctionName: 'GO-HelloWorld',
           Payload: JSON.stringify(lambdaReq)
@@ -69,7 +69,8 @@ http.createServer(function (req, res) {
   } else {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-    res.write('<input type="text" id="Name" name="Name"><br>')
+    res.write('<input type="text" id="Name" name="Name"><br>');
+    res.write('<input type="text" id="Emailid" name="Emailid"><br>');
     res.write('<input type="file" name="filetoupload"><br>');
     res.write('<input type="submit">');
     res.write('</form>');
