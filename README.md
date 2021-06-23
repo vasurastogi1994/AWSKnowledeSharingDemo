@@ -11,7 +11,15 @@
 		
 4. Create HelloWorld Directory and paste main.js
 5. Launch the project using command ->  
+		
  		node main.js
+	
 6. Create S3 Bucket
 7. Create User with programmatic AWS Access Keys with access to S3 and Lambda
-8. Deploy Signup form in EC2 instance - Change Keys, Region, BucketName
+8. Deploy Signup form in EC2 instance - Change Keys, Region, BucketName & run the below commands
+		
+		npm install
+ 		node file_upload.js
+
+10. Create a Lambda Function - Rename Handler and add Role to Lambda for Access to Dynamo DB
+11. Create Dynamo DB User with Emailid as the partition key
