@@ -23,7 +23,9 @@
 8. Deploy Signup form in EC2 instance - Change Keys, Region, BucketName & run the below commands
 
 		cd /home/ec2-user/SignUp		
+		su ec2-user
 		npm install
+		sudo su
  		node file_upload.js
 
 10. Create a Lambda Function - Rename Handler and add Role to Lambda for Access to Dynamo DB
